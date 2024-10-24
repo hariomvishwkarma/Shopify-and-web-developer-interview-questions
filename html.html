@@ -73,16 +73,15 @@
       font-size: 1rem;
     }
   </style>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
-
   <div class="container">
     <h1>
       HTML Interview Questions 
       <span>by Harion Vishwakarma</span>
     </h1>
 
-    <!-- Back button to go to the main page -->
     <div class="back-button">
       <a href="index.html">← Back to Categories</a>
     </div>
@@ -102,38 +101,11 @@
       Semantic HTML refers to the use of HTML elements to reinforce the meaning of the information in webpages, rather than merely defining its presentation. It is important for accessibility, SEO, and providing meaningful context to browsers and other tools.
     </div>
 
-    <div class="question" onclick="toggleAnswer(this)">
-      3. How do you create a form in HTML? Explain with examples.
+    <div id="question-form">
+      <h2>Add Your Question</h2>
+      <input type="text" id="user-question" placeholder="Enter your question here" required>
+      <button onclick="addQuestion()">Submit Question</button>
     </div>
-    <div class="answer">
-      A form in HTML can be created using the &lt;form&gt; element, which contains &lt;input&gt;, &lt;textarea&gt;, and &lt;button&gt; elements. For example:
-      <pre>
-        &lt;form action="/submit" method="POST"&gt;
-          &lt;input type="text" name="username" placeholder="Username"&gt;
-          &lt;input type="password" name="password" placeholder="Password"&gt;
-          &lt;button type="submit"&gt;Submit&lt;/button&gt;
-        &lt;/form&gt;
-      </pre>
-    </div>
-
-    <div class="question" onclick="toggleAnswer(this)">
-      4. What are the different types of input elements in HTML forms?
-    </div>
-    <div class="answer">
-      Input elements in HTML forms include text, password, radio, checkbox, file, submit, button, date, email, and more. Each input type allows for different kinds of user input.
-    </div>
-
-    <div class="question" onclick="toggleAnswer(this)">
-      5. How does the &lt;meta&gt; tag work in HTML? Provide examples.
-    </div>
-    <div class="answer">
-      The &lt;meta&gt; tag provides metadata about the HTML document, such as author, description, and keywords, as well as control over browser behavior like viewport settings. Example:
-      <pre>
-        &lt;meta name="description" content="Interview questions for web developers"&gt;
-        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-      </pre>
-    </div>
-
   </div>
 
   <script>
@@ -143,7 +115,33 @@
       const isDisplayed = answerElement.style.display === 'block';
       answerElement.style.display = isDisplayed ? 'none' : 'block';
     }
-  </script>
 
+    // Initialize EmailJS with your Public Key
+    emailjs.init('UkWzhboA4aTz0uIH-'); // Replace with your actual Public Key
+
+    function sendQuestionEmail(question) {
+      emailjs.send('service_25d7thk', 'template_1n8268n', {
+        question: question
+      })
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+      }, function(error) {
+        console.log('FAILED...', error);
+      });
+    }
+
+    function addQuestion() {
+      const questionInput = document.getElementById('user-question');
+      const question = questionInput.value;
+      
+      if (question) {
+        sendQuestionEmail(question);
+        alert('Your question has been submitted!');
+        questionInput.value = ''; // Clear the input field
+      } else {
+        alert('Please enter a question.');
+      }
+    }
+  </script>
 </body>
 </html>
