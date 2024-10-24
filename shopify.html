@@ -144,7 +144,11 @@
     <div class="answer">
       To add functionality to a specific product, you can use product tags, metafields, or conditional statements in Liquid to customize the display and functionality based on the product's attributes.
     </div>
-
+    <div id="question-form">
+      <h2>Add Your Question</h2>
+      <input type="text" id="user-question" placeholder="Enter your question here" required>
+      <button onclick="addQuestion()">Submit Question</button>
+    </div>
   </div>
 
   <script>
@@ -155,6 +159,40 @@
       answerElement.style.display = isDisplayed ? 'none' : 'block';
     }
   </script>
+<script>
+  // JavaScript function to toggle the visibility of answers
+  function toggleAnswer(questionElement) {
+    const answerElement = questionElement.nextElementSibling;
+    const isDisplayed = answerElement.style.display === 'block';
+    answerElement.style.display = isDisplayed ? 'none' : 'block';
+  }
 
+  // Initialize EmailJS with your Public Key
+  emailjs.init('nflc6klHyHulJHKcP'); // Replace with your actual Public Key
+
+  function sendQuestionEmail(question) {
+    emailjs.send('service_25d7thk', 'template_1n8268n', {
+      question: question
+    })
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
+  }
+
+  function addQuestion() {
+    const questionInput = document.getElementById('user-question');
+    const question = questionInput.value;
+    
+    if (question) {
+      sendQuestionEmail(question);
+      alert('Your question has been submitted!');
+      questionInput.value = ''; // Clear the input field
+    } else {
+      alert('Please enter a question.');
+    }
+  }
+</script>
 </body>
 </html>

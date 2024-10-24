@@ -73,7 +73,9 @@
       font-size: 1rem;
     }
   </style>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 </head>
 <body>
   <div class="container">
@@ -117,7 +119,7 @@
     }
 
     // Initialize EmailJS with your Public Key
-    emailjs.init('UkWzhboA4aTz0uIH-'); // Replace with your actual Public Key
+    emailjs.init('nflc6klHyHulJHKcP'); // Replace with your actual Public Key
 
     function sendQuestionEmail(question) {
       emailjs.send('service_25d7thk', 'template_1n8268n', {
