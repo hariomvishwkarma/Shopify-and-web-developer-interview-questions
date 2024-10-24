@@ -54,11 +54,7 @@
     <div class="category" data-category="shopify">Shopify</div>
     <div class="category" data-category="other">Other Questions</div>
   </div>
-  <div class="user-input-form">
-    <h2>Add Your Question</h2>
-    <input type="text" id="userQuestion" placeholder="Enter your question here" />
-    <button onclick="addQuestion()">Add Question</button>
-  </div>
+
 </div>
   <script>
     // JavaScript to redirect to the next page based on the clicked category
@@ -72,74 +68,6 @@
       });
     });
   </script>
-    <script>
-        // JavaScript function to toggle the visibility of answers
-        function toggleAnswer(questionElement) {
-          const answerElement = questionElement.nextElementSibling;
-          const isDisplayed = answerElement.style.display === 'block';
-          answerElement.style.display = isDisplayed ? 'none' : 'block';
-        }
     
-        // Function to add a user question to the list and store in local storage
-        function addQuestion() {
-          const userQuestionInput = document.getElementById('userQuestion');
-          const userQuestion = userQuestionInput.value.trim();
-    
-          if (userQuestion) {
-            // Create a new question element
-            const newQuestion = document.createElement('div');
-            newQuestion.className = 'question';
-            newQuestion.onclick = function() { toggleAnswer(this); };
-            newQuestion.textContent = userQuestion;
-    
-            // Create a corresponding answer element (initially hidden)
-            const newAnswer = document.createElement('div');
-            newAnswer.className = 'answer';
-            newAnswer.textContent = 'Answer not provided yet.'; // Placeholder answer
-    
-            // Append new question and answer to the container
-            const container = document.querySelector('.container');
-            container.appendChild(newQuestion);
-            container.appendChild(newAnswer);
-    
-            // Save the new question to local storage
-            saveQuestionToLocalStorage(userQuestion);
-    
-            // Clear the input field
-            userQuestionInput.value = '';
-          } else {
-            alert('Please enter a question.');
-          }
-        }
-    
-        // Function to save questions to local storage
-        function saveQuestionToLocalStorage(question) {
-          let questions = JSON.parse(localStorage.getItem('userQuestions')) || [];
-          questions.push({ question: question, answer: 'Answer not provided yet.' });
-          localStorage.setItem('userQuestions', JSON.stringify(questions));
-        }
-    
-        // Function to load questions from local storage
-        function loadQuestionsFromLocalStorage() {
-          let questions = JSON.parse(localStorage.getItem('userQuestions')) || [];
-          questions.forEach(item => {
-            const newQuestion = document.createElement('div');
-            newQuestion.className = 'question';
-            newQuestion.onclick = function() { toggleAnswer(this); };
-            newQuestion.textContent = item.question;
-    
-            const newAnswer = document.createElement('div');
-            newAnswer.className = 'answer';
-            newAnswer.textContent = item.answer;
-    
-            const container = document.querySelector('.container');
-            container.appendChild(newQuestion);
-            container.appendChild(newAnswer);
-          });
-        }
-    
-        // Load questions on page load
-        window.onload = loadQuestionsFromLocalStorage;
-      </script>
 </body>
 </html>
