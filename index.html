@@ -61,6 +61,19 @@
       background-color: #0056b3;
     }
   </style>
+  <script>
+    // Check if the user is logged in
+    document.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = 'login.html';  // Redirect to login page if not logged in
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem('loggedIn'); // Remove login status
+      window.location.href = 'login.html'; // Redirect to login page after logout
+    }
+  </script>
 </head>
 <body>
     <div class="page-width">
@@ -91,6 +104,6 @@
       });
     });
   </script>
-    
+    <button onclick="logout()">Logout</button>
 </body>
 </html>
