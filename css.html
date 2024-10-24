@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Interview Questions - Shopify and Web Developer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      font-size: 0.5em;
+      display: block;
+      font-weight: normal;
+    }
+
+    .back-button {
+      margin-bottom: 20px;
+    }
+
+    .back-button a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .back-button a:hover {
+      background-color: #0056b3;
+    }
+
+    .question {
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+
+    .answer {
+      margin-top: 5px;
+      display: none;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>
+      CSS Interview Questions 
+      <span>by Harion Vishwakarma</span>
+    </h1>
+
+    <!-- Back button to go to the main page -->
+    <div class="back-button">
+      <a href="index.html">← Back to Categories</a>
+    </div>
+
+    <!-- CSS Questions with Dropdown Answers -->
+    <div class="question" onclick="toggleAnswer(this)">
+      1. What are pseudo-elements and pseudo-classes in CSS?
+    </div>
+    <div class="answer">
+      Pseudo-elements allow you to style specific parts of an element, such as `::before` or `::after`, while pseudo-classes, such as `:hover`, define a special state of an element.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      2. How do you center text inside a div?
+    </div>
+    <div class="answer">
+      To center text horizontally, you can use `text-align: center;`. For vertical centering, you can use `display: flex;` along with `align-items: center;` and `justify-content: center;`.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      3. What is the box model in CSS?
+    </div>
+    <div class="answer">
+      The box model consists of content, padding, border, and margin. Each of these layers affects the total width and height of the element.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      4. How do you create a responsive layout using media queries?
+    </div>
+    <div class="answer">
+      Media queries allow you to apply different styles based on the screen size or device type. For example:
+      <pre>
+        @media (max-width: 768px) {
+          .container {
+            width: 100%;
+          }
+        }
+      </pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      5. What is Flexbox and how does it work?
+    </div>
+    <div class="answer">
+      Flexbox is a layout model that allows items to align and distribute space within a container. It provides flexibility in creating responsive layouts. Use `display: flex;` on the parent element and `flex` properties on child elements to control alignment.
+    </div>
+
+  </div>
+
+  <script>
+    // JavaScript function to toggle the visibility of answers
+    function toggleAnswer(questionElement) {
+      const answerElement = questionElement.nextElementSibling;
+      const isDisplayed = answerElement.style.display === 'block';
+      answerElement.style.display = isDisplayed ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Technical Interview Questions - Shopify and Web Developer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      font-size: 0.5em;
+      display: block;
+      font-weight: normal;
+    }
+
+    .back-button {
+      margin-bottom: 20px;
+    }
+
+    .back-button a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .back-button a:hover {
+      background-color: #0056b3;
+    }
+
+    .question {
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+
+    .answer {
+      margin-top: 5px;
+      display: none;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>
+      Other Technical Interview Questions 
+      <span>by Harion Vishwakarma</span>
+    </h1>
+
+    <!-- Back button to go to the main page -->
+    <div class="back-button">
+      <a href="index.html">← Back to Categories</a>
+    </div>
+
+    <!-- Other Technical Questions with Dropdown Answers -->
+    <div class="question" onclick="toggleAnswer(this)">
+      1. What is your best project of all time?
+    </div>
+    <div class="answer">
+      My best project was a custom e-commerce platform built on Shopify that integrated third-party APIs for payment processing and inventory management, resulting in a 30% increase in sales for the client.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      2. Describe any creative functionality you implemented.
+    </div>
+    <div class="answer">
+      I created a dynamic product recommendation engine using Shopify's Liquid to analyze customer behavior and suggest products based on their shopping history, leading to higher engagement and sales.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      3. How many projects are you currently working on?
+    </div>
+    <div class="answer">
+      Currently, I am managing three projects simultaneously, including two Shopify stores and a web application for a client.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      4. What are the main components in Shopify?
+    </div>
+    <div class="answer">
+      The main components in Shopify include Products, Collections, Orders, Customers, and Themes, which together create a complete e-commerce experience.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      5. What is the difference between Shopify and Shopify Plus?
+    </div>
+    <div class="answer">
+      Shopify Plus is an enterprise-level solution with advanced features like more customization options, dedicated support, and enhanced API capabilities, making it suitable for larger businesses.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      6. Why use Shopify for e-commerce?
+    </div>
+    <div class="answer">
+      Shopify offers a user-friendly interface, extensive app integrations, robust security features, and a reliable payment processing system, making it an ideal choice for businesses of all sizes.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      7. What are some key features of Shopify?
+    </div>
+    <div class="answer">
+      Key features of Shopify include customizable templates, a built-in payment gateway, SEO tools, mobile optimization, and 24/7 customer support.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      8. How many stores can you work on with Shopify Plus?
+    </div>
+    <div class="answer">
+      With Shopify Plus, you can manage multiple stores from a single account, allowing for better scalability and management across different brands or regions.
+    </div>
+  </div>
+
+  <script>
+    // JavaScript function to toggle the visibility of answers
+    function toggleAnswer(questionElement) {
+      const answerElement = questionElement.nextElementSibling;
+      const isDisplayed = answerElement.style.display === 'block';
+      answerElement.style.display = isDisplayed ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
