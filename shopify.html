@@ -72,6 +72,7 @@
       border-radius: 4px;
       font-size: 1rem;
     }
+
     #question-form {
       margin-top: 20px;
     }
@@ -101,16 +102,15 @@
 
   <div class="container">
     <h1>
-      Shopify Interview Questions 
+      Liquid Interview Questions
       <span>by Harion Vishwakarma</span>
     </h1>
 
-    <!-- Back button to go to the main page -->
     <div class="back-button">
       <a href="index.html">← Back to Categories</a>
     </div>
 
-    <!-- Liquid Questions with Dropdown Answers -->
+    <!-- Existing Questions -->
     <div class="question" onclick="toggleAnswer(this)">
       1. What are the main components in Shopify?
     </div>
@@ -140,7 +140,6 @@
     </div>
     <div class="answer">
       To show only the variant-related images, you can use the `product.variants` and `product.images` objects to filter the images based on the selected variant. 
-      For example:
       <pre>
         {% for variant in product.variants %}
           {% if variant.selected %}
@@ -167,6 +166,74 @@
     <div class="answer">
       To add functionality to a specific product, you can use product tags, metafields, or conditional statements in Liquid to customize the display and functionality based on the product's attributes.
     </div>
+
+    <!-- New Questions -->
+    <div class="question" onclick="toggleAnswer(this)">
+      6. What is the difference between Metafield and Metaobject in Shopify?
+    </div>
+    <div class="answer">
+      <strong>Metafields</strong> are used to store additional data for individual resources (like products, collections, customers).<br>
+      <strong>Metaobjects</strong> are reusable custom data models that can store structured data and be linked to multiple resources.<br><br>
+      <em>Example:</em><br>
+      - Metafield: A single product’s “ingredient list”<br>
+      - Metaobject: A shared “ingredient” data model used across multiple products.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      7. Define Filter in Liquid.
+    </div>
+    <div class="answer">
+      Filters in Liquid are used to modify the output of variables. They are similar to functions that transform data.<br>
+      <em>Example:</em><br>
+      <code>{{ product.title | upcase }}</code> → converts product title to uppercase.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      8. What is App Development in Shopify?
+    </div>
+    <div class="answer">
+      App development in Shopify involves creating private, custom, or public apps to extend store functionality using the Shopify API, Admin API, and Storefront API. Apps can handle automation, integrate external systems, or add custom storefront features.
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      9. Define Schema in Shopify.
+    </div>
+    <div class="answer">
+      Schema defines the settings and structure of a section in a Shopify theme. It allows you to add editable fields (like text, image, color pickers) in the theme editor.<br>
+      <em>Example:</em><br>
+      <pre>
+      {% schema %}
+      {
+        "name": "Hero Banner",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Banner Heading"
+          }
+        ]
+      }
+      {% endschema %}
+      </pre>
+    </div>
+
+    <div class="question" onclick="toggleAnswer(this)">
+      10. What is the difference between Assign and Capture in Liquid?
+    </div>
+    <div class="answer">
+      <strong>assign</strong> is used to store a simple value in a variable.<br>
+      <strong>capture</strong> is used to store blocks of text or HTML in a variable.<br><br>
+      <em>Example:</em><br>
+      <pre>
+      {% assign name = 'Harion' %}
+      {% capture message %}
+        Hello {{ name }}, welcome to Shopify!
+      {% endcapture %}
+      {{ message }}
+      </pre>
+    </div>
+
+    <!-- Add Question Form -->
     <div id="question-form">
       <h2>Add Your Question</h2>
       <input type="text" id="user-question" placeholder="Enter your question here" required>
@@ -175,47 +242,39 @@
   </div>
 
   <script>
-    // JavaScript function to toggle the visibility of answers
     function toggleAnswer(questionElement) {
       const answerElement = questionElement.nextElementSibling;
       const isDisplayed = answerElement.style.display === 'block';
       answerElement.style.display = isDisplayed ? 'none' : 'block';
     }
   </script>
-<script>
-  // JavaScript function to toggle the visibility of answers
-  function toggleAnswer(questionElement) {
-    const answerElement = questionElement.nextElementSibling;
-    const isDisplayed = answerElement.style.display === 'block';
-    answerElement.style.display = isDisplayed ? 'none' : 'block';
-  }
 
-  // Initialize EmailJS with your Public Key
-  emailjs.init('nflc6klHyHulJHKcP'); // Replace with your actual Public Key
+  <script>
+    emailjs.init('nflc6klHyHulJHKcP'); // Replace with your actual Public Key
 
-  function sendQuestionEmail(question) {
-    emailjs.send('service_25d7thk', 'template_1n8268n', {
-      question: question
-    })
-    .then(function(response) {
-      console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
-      console.log('FAILED...', error);
-    });
-  }
-
-  function addQuestion() {
-    const questionInput = document.getElementById('user-question');
-    const question = questionInput.value;
-    
-    if (question) {
-      sendQuestionEmail(question);
-      alert('Your question has been submitted!');
-      questionInput.value = ''; // Clear the input field
-    } else {
-      alert('Please enter a question.');
+    function sendQuestionEmail(question) {
+      emailjs.send('service_25d7thk', 'template_1n8268n', {
+        question: question
+      })
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+      }, function(error) {
+        console.log('FAILED...', error);
+      });
     }
-  }
-</script>
+
+    function addQuestion() {
+      const questionInput = document.getElementById('user-question');
+      const question = questionInput.value;
+      
+      if (question) {
+        sendQuestionEmail(question);
+        alert('Your question has been submitted!');
+        questionInput.value = '';
+      } else {
+        alert('Please enter a question.');
+      }
+    }
+  </script>
 </body>
 </html>
